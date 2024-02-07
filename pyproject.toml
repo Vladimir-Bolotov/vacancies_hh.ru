@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "vacancies-hh-ru"
+version = "0.1.0"
+description = ""
+authors = ["Vladimir-Bolotov <mory4ok.89@yandex.ru>"]
+readme = "README.md"
+packages = [{include = "vacancies_hh"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+configparser = "^6.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
