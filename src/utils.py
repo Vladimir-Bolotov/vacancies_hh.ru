@@ -40,7 +40,7 @@ def create_db(name_db: str, params: dict) -> None:
                         vacancy_name VARCHAR(100),
                         salary INT,
                         link VARCHAR)""")
-    conn.commit()
+    conn.close()
 
 
 def seve_to_bd(data: list[dict], name_db: str, params: dict) -> None:
@@ -55,7 +55,7 @@ def seve_to_bd(data: list[dict], name_db: str, params: dict) -> None:
                     cur.execute("""INSERT INTO employers (employer_name) VALUES (%s)
                                 RETURNING employer_id""", (name_company,))
 
-                    employer_id = (cur.fetchone()[0])
+                    employer_id = cur.fetchone()[0]
 
                     for vacancy in item['items']:
                         vacancy_name = vacancy['name']
@@ -72,4 +72,4 @@ def seve_to_bd(data: list[dict], name_db: str, params: dict) -> None:
                     print(f'В компании {name_company} (id - {vacancy["employer"]["id"]}) нет открытых вакансий')
                     continue
 
-    conn.commit()
+    conn.close()
